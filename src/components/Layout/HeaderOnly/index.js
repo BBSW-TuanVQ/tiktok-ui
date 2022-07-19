@@ -1,6 +1,6 @@
 import Header from "~/components/Layout/components/Header";
 
-function DefaultLayout({children}) {
+function HeaderOnly({children}) {
     //layout mặc định gồm Header và SideBar truyền vào props children là component đại diện cho các trang
     return ( 
         <div>
@@ -14,4 +14,4 @@ function DefaultLayout({children}) {
      );
 }
 
-export default DefaultLayout;
+export default HeaderOnly;
