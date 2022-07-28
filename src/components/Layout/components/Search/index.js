@@ -8,6 +8,7 @@ import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
@@ -29,10 +30,14 @@ function Search() {
 
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then((res) => res.json())
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search`, {
+            params: {
+                q: debounced,
+                type: 'less'
+            }
+        })
             .then((res) => {
-                setSearchResult(res.data);
+                setSearchResult(res.data.data);
                 setLoading(false);
             })
             .catch(() => {
